@@ -1,40 +1,4 @@
-72af672d-b5b3-44db-b438-46acb0678f25
-DeleteDelete analyze doodles game, something is missing please complete the gameDelete I seethat the maze is not "connected" so the pacman and ghost can never mee
 
-Delete analyze doodles game, something is missing please complete the game,
-o3-mini, deepseek-v3 (coder), and deepseek-r1 (reasoner) are now available.
-
-
-doodles.py
-analyze doodles game, something is missing please complete the game
-
-
-avatar
-Ask GPT
-These changes add:
-
-Complete laser drawing and cleanup
-Collision detection between player and ghosts
-Collision detection between lasers and ghosts
-Special handling for the red ghost
-Game over screen
-Proper game loop timing
-The game is now playable with basic functionality. You might want to add additional features like:
-
-Score tracking
-Lives system
-Power-ups
-Different ghost types
-Level progression
-Sound effects
-Main menu
-Would you like me to add any of these additional features?
-
-show me the full file
-
-
-avatar
-Ask GPT
 import pygame
 import random
 import math
