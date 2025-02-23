@@ -2,9 +2,13 @@ import pygame
 import sys
 import random
 import math
+from sounds import PacmanSounds
 
 # Initialize Pygame
 pygame.init()
+
+# After pygame.init()
+sounds = PacmanSounds()
 
 # Game constants
 CELL_SIZE = 30
@@ -112,6 +116,9 @@ def move_character(character, maze):
     if character["direction"] != (0, 0):
         character["progress"] += character["speed"] / CELL_SIZE
         
+        if character == pacman and character["progress"] >= 1:
+            sounds.play_walk()
+            
         if character["progress"] >= 1:
             overflow = character["progress"] - 1
             character["grid_x"] += character["direction"][0]
@@ -216,7 +223,8 @@ def check_collisions():
     if dots[py][px]:
         dots[py][px] = False
         score += 10
-    
+        sounds.play_eat()
+
     # Ghost collision
     pac_rect = pygame.Rect(
         (pacman["grid_x"] + pacman["direction"][0] * pacman["progress"]) * CELL_SIZE,
@@ -232,6 +240,7 @@ def check_collisions():
     
     if pac_rect.colliderect(ghost_rect):
         lives -= 1
+        sounds.play_death()
         if lives <= 0:
             pygame.quit()
             sys.exit()
@@ -336,7 +345,7 @@ def draw_pacman():
         # Only draw if we have enough points
         if len(points) > 2:
             pygame.draw.polygon(screen, BLACK, points)
-            
+
 # Update the draw function to use the new draw_pacman function
 def draw():
     screen.fill(BLACK)
