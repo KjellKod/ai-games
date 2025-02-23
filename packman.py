@@ -346,11 +346,8 @@ def draw_pacman():
         if len(points) > 2:
             pygame.draw.polygon(screen, BLACK, points)
 
-# Update the draw function to use the new draw_pacman function
-def draw():
-    screen.fill(BLACK)
-    
-    # Draw maze and dots (unchanged)
+def draw_maze():
+    """Draw the maze and dots."""
     for y in range(len(MAZE)):
         for x in range(len(MAZE[y])):
             if MAZE[y][x] == "#":
@@ -359,6 +356,12 @@ def draw():
             if dots[y][x]:
                 center = (x*CELL_SIZE + CELL_SIZE//2, y*CELL_SIZE + CELL_SIZE//2)
                 pygame.draw.circle(screen, WHITE, center, 3)
+
+def draw():
+    screen.fill(BLACK)
+    
+    # Draw maze and dots
+    draw_maze()
     
     # Draw Pac-Man with the new function
     draw_pacman()
